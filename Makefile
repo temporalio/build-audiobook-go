@@ -23,12 +23,6 @@ $(BINARY_DIR):
 build-worker:
 	cd worker && $(GOBUILD) -o ../$(BINARY_NAME_WORKER)
 
-clean-deps:
-	rm -rf $(GOPATH)/pkg/mod
-
-fetch-deps:
-	$(GOGET) -u ./...
-
 run:
 	./$(BINARY_NAME_WORKER)
 
