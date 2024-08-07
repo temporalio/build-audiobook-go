@@ -49,13 +49,13 @@ The environment variable must be set in the same shell where you'll run your app
 1. Build the Worker app:
 
    ```sh
-   make
+   go build
    ```
 
 2. Start the app running:
 
    ```sh
-   make run
+   bin/worker
    ```
 
 If the Worker can't fetch a bearer token from the shell environment, it will loudly fail at launch.
@@ -181,7 +181,6 @@ ffmpeg -i fullbook.mp3 fullbook.m4a
 ```sh
 .
 ├── LICENSE
-├── Makefile
 ├── README.md
 ├── TTSActivities.go
 ├── TTSWorkflow.go
