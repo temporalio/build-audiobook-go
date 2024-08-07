@@ -5,7 +5,7 @@ import (
     "log"
     "os"
     "strings"
-    "hello-world-temporal/app"
+    "audiobook/app"
 
     "go.temporal.io/sdk/client"
     "go.temporal.io/sdk/worker"
@@ -35,7 +35,7 @@ func main() {
     }
     defer c.Close()
 
-    w := worker.New(c, "TTS_TASK_QUEUE", worker.Options{})
+    w := worker.New(c, TaskQueue, worker.Options{})
 
     w.RegisterWorkflow(app.TTSWorkflow)
     w.RegisterActivity(app.ReadFile)

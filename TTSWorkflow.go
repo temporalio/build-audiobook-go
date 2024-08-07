@@ -1,4 +1,5 @@
-// @@@SNIPSTART audiobook-project-go-tts-workflow
+// @@@SNIPSTART
+
 package app
 
 import (
