@@ -82,7 +82,11 @@ temporal workflow execute \
 * **workflow-id**: Set a descriptive name for your Workflow Id.
   This makes it easier to track your Workflow Execution in the Web UI.
  
-  The identifier you set doesn't affect the input text file or the output audio file names.
+Please note:
+
+* The identifier you set won't affect the input text file or the output audio file names.
+* Use full paths as the Worker is not given context for relative path resolution.
+* Sample files appear in the `text-samples` folder.
 
 ### The output file
 
@@ -99,7 +103,6 @@ The results path is also displayed as part of the CLI's `workflow execute` comma
 ### Cautions and notes
 
 - Do not modify your input or output files while the Workflow is running.
-  Temporal is not a cure for bad judgement.
 - The Workflow fails if you don't pass a valid text file named with a `txt` extension.
 
 ### Peeking at the process
@@ -184,6 +187,9 @@ ffmpeg -i fullbook.mp3 fullbook.m4a
 ├── TTSWorkflow.go
 ├── go.mod
 ├── go.sum
+├── text-samples
+│   ├── austen.txt
+│   └── doyle.txt
 └── worker
     └── main.go
 ```
