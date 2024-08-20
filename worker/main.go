@@ -2,10 +2,10 @@
 package main
 
 import (
+	"audiobook/app"
     "log"
     "os"
     "strings"
-    "audiobook/app"
 
     "go.temporal.io/sdk/client"
     "go.temporal.io/sdk/worker"
@@ -13,6 +13,7 @@ import (
 
 const TaskQueue = "tts-task-queue"
 
+// May be useful to have a variable to configure the server address if someone is running on a different port locally
 func main() {
     bearerToken := os.Getenv("OPEN_AI_BEARER_TOKEN")
     if bearerToken == "" {
@@ -48,4 +49,5 @@ func main() {
         log.Fatalln("unable to start Worker", err)
     }
 }
+
 // @@@SNIPEND

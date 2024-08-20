@@ -15,6 +15,10 @@ import (
     "go.temporal.io/sdk/temporal"
 )
 
+// We should avoid globals and define a activity struct to contain these
+// You can see an example of an activity struct here:
+// https://github.com/temporalio/samples-go/blob/main/cancellation/activity.go
+// These can be fields on the struct and the activities can be methods on the struct
 var BearerToken string
 var fileMutex sync.Mutex
 
@@ -27,6 +31,7 @@ const (
     fileExtension        = ".mp3"
 )
 
+// In the Go SDK activities are not defined as interfaces, but as functions or methods on structs
 type TTSActivities interface {
     ReadFile(ctx context.Context, fileInputPath string) ([]string, error)
     CreateTemporaryFile(ctx context.Context) (string, error)
@@ -208,4 +213,5 @@ func MoveOutputFileToPlace(ctx context.Context, tempPath, originalPath string) (
 
     return newPath, nil
 }
+
 // @@@SNIPEND

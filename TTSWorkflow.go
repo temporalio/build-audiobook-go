@@ -12,7 +12,7 @@ import (
 
 func TTSWorkflow(ctx workflow.Context, fileInputPath string) (string, error) {
     var message = "Conversion request received"
-
+	// Generally we recommend users define QueryType as a global constant so other code can use it, for this example it is probably OK here.
     queryType := "fetchMessage"
 
     err := workflow.SetQueryHandler(ctx, queryType, func() (string, error) {
@@ -30,7 +30,8 @@ func TTSWorkflow(ctx workflow.Context, fileInputPath string) (string, error) {
     ctx = workflow.WithActivityOptions(ctx, ao)
 
     var chunks []string
-
+	// This sample only works if all the activities are run on the same worker, if you have multiple workers they will need to use a sessions or per worker task queue.
+	// I understand if the goal of the sample isn't to show sessions or multiple workers, but it is something we should call out clearly.
     err = workflow.ExecuteActivity(ctx, ReadFile, fileInputPath).Get(ctx, &chunks)
     if err != nil {
         return "", fmt.Errorf("failed to read file: %w", err)
@@ -45,7 +46,7 @@ func TTSWorkflow(ctx workflow.Context, fileInputPath string) (string, error) {
     if err != nil {
         return "", fmt.Errorf("failed to create temporary file: %w", err)
     }
-
+	// We should not use `log` in a workflow. users should call log := workflow.GetLogger(ctx) and use that logger.
     log.Printf("Created temporary file for processing: %s", tempOutputPath)
 
     for index := 0; index < chunkCount; index++ {
@@ -66,4 +67,5 @@ func TTSWorkflow(ctx workflow.Context, fileInputPath string) (string, error) {
     log.Printf("Output file: %s", outputPath)
     return outputPath, nil
 }
+
 // @@@SNIPEND
