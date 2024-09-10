@@ -46,17 +46,9 @@ The environment variable must be set in the same shell where you'll run your app
 
 ### Run the application (Worker)
 
-1. Build the Worker app:
-
-   ```sh
-   go build
-   ```
-
-2. Start the app running:
-
-   ```sh
-   bin/worker
-   ```
+```
+go run worker/main.go
+```
 
 If the Worker can't fetch a bearer token from the shell environment, it will loudly fail at launch.
 This early check prevents you from running jobs and waiting to find out that you forgot to set the bearer token until you're well into the Workflow process.
