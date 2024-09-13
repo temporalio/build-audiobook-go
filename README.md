@@ -12,16 +12,14 @@ Together, these two technologies help you focus on creating great content.
 
 **_This project is part of a tutorial._** Follow along by reading the [Build Your Own Audiobooks guide](https://learn.temporal.io/tutorials/go/audiobook/) at [Temporal's learn site](https://learn.temporal.io/tutorials).
 
-**_Caution_**
+**This tutorial is written to be run on a single system, with a single Worker, using the local file system.**
+**This is a tutorial project and its implementation is suited for personal and hobbyist use.**
+**In production, you wouldn't read or write from a single database file or system.**
+**This approach isn't durable so you wouldn't develop durable software with them.**
 
-This tutorial is written to be run on a single system, with a single Worker, using the local file system.
-This is a tutorial project and its implementation is suited for personal and hobbyist use.
-In production, you wouldn't read or write from a single database file or system.
-This approach isn't durable so you wouldn't develop durable software with them.
-
-Durable execution refers to maintaining state and progress even in the face of failures, crashes, or server outages. 
-For durable execution, you must be able to rebuild progress state and store information somewhere more reliable.
-If you expand on this project, consider a API-based Cloud storage solution.
+**Durable execution refers to maintaining state and progress even in the face of failures, crashes, or server outages.**
+**For durable execution, you must be able to rebuild progress state and store information somewhere more reliable.**
+**If you expand on this project, consider a API-based Cloud storage solution.**
 
 ## Prerequisites
 
